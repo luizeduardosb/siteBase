@@ -1,0 +1,32 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de usuários' /}
+
+
+<form action="@{Pessoas.listar}">
+
+<table class="table table-dark table-hover">
+
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+	#{list items:lista, as:'p'}
+    <tr>
+      <th scope="row">${p.id}</th>
+      <td>${p.nome}</td>
+      <td>${p.email}</td>
+      <td>${p.idade}</td>
+      <td>	<a href='@{Pessoas.editar(p.id)}'> Editar </a> 
+	<a href='@{Pessoas.deletar(p.id)}'> Deletar </a> </td>
+	<tr>
+	#{/list}
+	
+  </tbody>
+</table>
